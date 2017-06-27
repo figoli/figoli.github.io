@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Javascript on Ryan Taylor&#39;s Blog</title>
-    <link>https://example.com/tags/javascript/</link>
+    <link>https://figoli.github.io/tags/javascript/</link>
     <description>Recent content in Javascript on Ryan Taylor&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Mancala</title>
-      <link>https://example.com/project/mancala/</link>
+      <link>https://figoli.github.io/project/mancala/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/project/mancala/</guid>
+      <guid>https://figoli.github.io/project/mancala/</guid>
       <description>&lt;p&gt;I created this simple version of mancala in a browser as an experiment in using
 svg graphics.  The github repository is: &lt;a href=&#34;https://github.com/saltlakeryan/mancala-js&#34; target=&#34;_blank&#34;&gt;https://github.com/saltlakeryan/mancala-js&lt;/a&gt;.&lt;/p&gt;
 </description>

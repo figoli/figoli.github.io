@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Ryan Taylor&#39;s Blog</title>
-    <link>https://example.com/post/</link>
+    <link>https://figoli.github.io/post/</link>
     <description>Recent content in Posts on Ryan Taylor&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Building Simple Python Tool for Creating PDF of TIFF files</title>
-      <link>https://example.com/post/python-tiff-to-pdf/</link>
+      <link>https://figoli.github.io/post/python-tiff-to-pdf/</link>
       <pubDate>Mon, 23 Jan 2017 19:09:05 -0600</pubDate>
       
-      <guid>https://example.com/post/python-tiff-to-pdf/</guid>
+      <guid>https://figoli.github.io/post/python-tiff-to-pdf/</guid>
       <description>
 
 &lt;p&gt;Today, a friend asked about a tool for archiving a bunch of TIFF files by putting them all into a single PDF file.  This seemed like a good entry point for creating a simple, yet useful, tool with python.&lt;/p&gt;
@@ -81,7 +81,7 @@ else:
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;For reference, here is what the sample input images directory structure looks like:
-&lt;img src=&#34;https://example.com/img/tif2pdf-folders.png&#34; alt=&#34;Example Directory Structure&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://figoli.github.io/img/tif2pdf-folders.png&#34; alt=&#34;Example Directory Structure&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;step-3-create-an-exe-file-using-pyinstaller&#34;&gt;Step 3. Create an exe file using pyinstaller&lt;/h2&gt;
 
