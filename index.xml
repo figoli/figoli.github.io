@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ryan Taylor&#39;s Blog on Ryan Taylor&#39;s Blog</title>
+    <link>https://example.com/</link>
+    <description>Recent content in Ryan Taylor&#39;s Blog on Ryan Taylor&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Ryan Taylor</copyright>
+    <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Building Simple Python Tool for Creating PDF of TIFF files</title>
+      <link>https://example.com/post/python-tiff-to-pdf/</link>
+      <pubDate>Mon, 23 Jan 2017 19:09:05 -0600</pubDate>
+      
+      <guid>https://example.com/post/python-tiff-to-pdf/</guid>
+      <description>
+
+&lt;p&gt;Today, a friend asked about a tool for archiving a bunch of TIFF files by putting them all into a single PDF file.  This seemed like a good entry point for creating a simple, yet useful, tool with python.&lt;/p&gt;
+
+&lt;p&gt;As an added challenge, he didn’t have administrator access to his windows PC, so we came up with a solution to create a python development environment in windows without using any administrative privileges.  Then we used the environment to develop a simple python application to bundle tiff files into a single PDF.  And just to add a little icing to the cake, we used some python build tools to create a standalone exe file.&lt;/p&gt;
+
+&lt;h2 id=&#34;step-1-setting-up-the-development-environment&#34;&gt;Step 1. Setting Up the Development Environment&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Download zip file of all the necessary files &lt;a href=&#34;https://goo.gl/l9KCrE&#34; target=&#34;_blank&#34;&gt;https://goo.gl/l9KCrE&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This includes the python installation file, pycharm IDE, sample images, etc.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Extract zip file (let’s say this was extracted to C:\Users\drwho\Downloads\pybundle&lt;/li&gt;
+&lt;li&gt;Create a virtual drive for that directory (let’s say T:) and install python:
+
+&lt;ul&gt;
+&lt;li&gt;open command line window, type the following:&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;subst T:  C:\Users\drwho\Downloads\pybundle
+T:
+install_python.bat
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Python is now installed with pip and the package img2pdf.  You can run this command to combine the sample images with the img2pdf command line tool that comes with the package:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Scripts\img2pdf.exe -o ../output.pdf ../images/dir_1/dir_2/dir_3/CCITT_2.TIF ../images/dir_a/dir_b/dir_c/CCITT_1.TIF ../images/dir_x/dir_y/dir_z/CCITT_3.TIF
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;step-2-using-img2pdf-library-to-create-tool&#34;&gt;Step 2. Using img2pdf library to create tool&lt;/h2&gt;
+
+&lt;p&gt;Turns out that with the img2pdf library, it is a very few lines of code that are required to create the command line tool.  Here is the resulting code that creates a simple GUI with Tk and allows you to specify a root directory to search
+for files:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import img2pdf, sys, os, time
+
+if len(sys.argv) &amp;gt; 1:
+    image_directory = sys.argv[1]
+    print &amp;quot;I&#39;m looking for TIFs in &amp;quot;, image_directory
+else:
+    print &amp;quot;Please tell me the directory to look in&amp;quot;
+    sys.exit()
+
+image_files = []
+
+for root, dirs, files in os.walk(image_directory):
+    for file in files:
+        if file.endswith(&amp;quot;.tif&amp;quot;) or file.endswith(&amp;quot;.TIF&amp;quot;):
+             print&amp;quot;Discovered this TIF: &amp;quot;, os.path.join(root, file)
+             image_files.append(os.path.join(root, file))
+
+if image_files:
+    output_file = time.strftime(&amp;quot;%Y%m%d-%H%M%S&amp;quot;) + &amp;quot;.pdf&amp;quot;
+    print &amp;quot;Putting all TIFs into &amp;quot;, output_file
+    pdf_bytes = img2pdf.convert(image_files)
+    file = open(output_file,&amp;quot;wb&amp;quot;)
+    file.write(pdf_bytes)
+else:
+    print &amp;quot;Couldn&#39;t find any TIFs&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For reference, here is what the sample input images directory structure looks like:
+&lt;img src=&#34;https://example.com/img/tif2pdf-folders.png&#34; alt=&#34;Example Directory Structure&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;step-3-create-an-exe-file-using-pyinstaller&#34;&gt;Step 3. Create an exe file using pyinstaller&lt;/h2&gt;
+
+&lt;p&gt;This is as simple as running (once pyinstaller is installed):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pyinstaller --onefile --windowed tif2pdf.py #assuming the above python file is named &amp;quot;tif2pdf.py&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;I found this to be a simple use case that serves a real-world need, but is also relatively easy to implement.
+I hope this can be useful to others, especially for anyone who is just starting to learn python.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Example Talk</title>
+      <link>https://example.com/talk/example-talk/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/talk/example-talk/</guid>
+      <description>&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mancala</title>
+      <link>https://example.com/project/mancala/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/project/mancala/</guid>
+      <description>&lt;p&gt;I created this simple version of mancala in a browser as an experiment in using
+svg graphics.  The github repository is: &lt;a href=&#34;https://github.com/saltlakeryan/mancala-js&#34; target=&#34;_blank&#34;&gt;https://github.com/saltlakeryan/mancala-js&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Person Re-Identification System For Mobile Devices</title>
+      <link>https://example.com/publication/person-re-identification/</link>
+      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publication/person-re-identification/</guid>
+      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mobile visual clothing search</title>
+      <link>https://example.com/publication/clothing-search/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publication/clothing-search/</guid>
+      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
