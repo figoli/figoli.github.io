@@ -445,6 +445,17 @@ dl em {
   font-size:120%;
   font-style:normal;
 }
+
+@media print {
+    a[href$='.pdf'] {
+        display: none;
+    }
+
+    /*.download-pdf {*/
+    /*    display: none;*/
+    /*}*/
+}
+
 @media screen and (min-width: 118em) {
 }
 
@@ -460,7 +471,7 @@ dl em {
 <h2>Senior Web Developer</h2>
 
 <blockquote>
-  <p><a href="ryan-taylor-resume.pdf">Download PDF</a><br />
+  <p><a class="download-pdf" href="ryan-taylor-resume.pdf">Download PDF</a><br />
   <a href="ryan@ryantaylor.info">ryan@ryantaylor.info</a><br />
   (801) 448-6584</p>
 </blockquote>
@@ -497,15 +508,18 @@ I enjoy learning about the latest trends in software, and rediscovering classic 
 <h3 id="technical">Technical <br/>Skills</h3>
 
 <ol>
-<li>Javascript</li>
-<li>Java</li>
-<li>PHP</li>
-<li>Python</li>
-<li>Ruby</li>
-<li>HTML &amp; CSS</li>
-<li>Git</li>
-<li>Docker</li>
-<li>Linux</li>
+    <li>PHP</li>
+    <li>Python</li>
+    <li>Java</li>
+    <li>Javascript</li>
+    <li>Laravel</li>
+    <li>Vue.js</li>
+    <li>React</li>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>Git</li>
+    <li>Docker</li>
+    <li>Linux</li>
 </ol>
 
 <hr />
@@ -554,6 +568,14 @@ and feature requests for legacy software.</dd>
     <dt>Billing and Invoicing System</dt>
     <dd><em>Technologies: Python, PHP, Javascript</em>
         I created a system to implement the business rules that were defined by our accounting department for billing internal and external teams for various items including staff time, supplies, and reservables. The final system is used monthly to process all billable items and generate invoices for clients.  Each step of the process creates a detailed, auditable log that can be used to compare each run to historical data.  TDD practices were used to ensure compliance with the business rules.
+    </dd>
+    <dt>Academic Profile Web Application</dt>
+    <dd><em>Technologies: PHP, Javascript, Laravel, Vue.js</em>
+        In order to make it easier for faculty to keep their academic profiles up to date, I designed and implemented a system that gives them the ability to edit their personal profile and highlight various accomplishments.  It gives them the option to automatically pull in publications from various third party sources so they don't have to manually perform updates.  The front-end was a Vue.js application and the backend was written in PHP (with Laravel).  The automatic publication scanning involved integration with web APIs provided by several different services.  Each scan notifies the authors of newly discovered publications.
+    </dd>
+    <dt>Purchase Request Management </dt>
+    <dd><em>Technologies: PHP, Javascript, Laravel, Vue.js</em>
+        I created this system to replace the ad-hoc workflow of tracking purchase requests through emails and excel spreadsheets.  After gathering a list of requirements from the administrators who were manually tracking these purchases, I was able to create a structured application that formalized the rules they had in place.  The system used Laravel on the backend and Vue.js on the frontend to handle authentication & authorization.  There are different levels of user roles with appropriate levels of access and notifications at each step of the process.
     </dd>
 </dl>
 
