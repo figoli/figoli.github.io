@@ -548,8 +548,15 @@ and feature requests for legacy software.</dd>
 
 <dl>
     <dt>Web API Design</dt>
-    <dd><em>Technologies: Java, Dropwizard, React.js, HTML</em>
+    <dd><em>Technologies: Java, Dropwizard, Javascript, React.js, HTML, OpenAPI</em>
         For one project in our lab, we were dependent on using a legacy software system to manage many of our internal lab processes.  The legacy software was written in Java and provided many useful features for lab management including supply tracking, user roles and training, equipment reservations and policy enforcement, equipment maintenance.  In order to improve the experience of our lab members, we decided to implement a browser interface for giving them easier access to the system on mobile and in the browser (previously required installing java).  Due to some constraints, we needed to limit our changes to the upstream project source code.  With that in mind, I decided on an architecture that wrapped the legacy code in an web-based interface.  The resulting project used a java service as the web api and a client code base that used html, javascript, reactjs for communicating to the api.  The api handled authentication and translating all communications to the underlying software.
+</dd>
+</dl>
+
+<dl>
+    <dt>Billing and Invoicing System</dt>
+    <dd><em>Technologies: Python, PHP, Javascript</em>
+        I created a system to implement the business rules that were defined by our accounting department for billing internal and external teams for various billable items including staff time, supplies, reservables. The system processed all billable items and generated invoices and prepared outputs for external systems to process inputs.  Each step of the system was logged and auditable to compare to historical data and confirm changes generated the expected outputs.  TDD practices were used to ensure conformity with business rules.
 </dd>
 </dl>
 
